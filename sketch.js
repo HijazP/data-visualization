@@ -34,11 +34,11 @@ const sketch = () => {
     context.font = "50px Arial";
     context.fillStyle = 'black';
     for (let index = 1; index <= 7; index++) {
-      context.fillText(`${[index]}0`, ((width - (2 * border)) / 7 * index) + border - 25, -1);
+      context.fillText(`${[index]}0`, ((width - (2 * border)) / 7 * index) + (border / 2), -1);
     }
     context.restore();
 
-    const maxGender = 60;
+    const maxGender = 70;
 
     var country = [];
     var female = [];
@@ -51,8 +51,29 @@ const sketch = () => {
         male.push(+d.male);
       })
 
+      context.save();
+      context.translate(0, height);
+      context.font = "40px Arial";
+      context.fillStyle = 'black';
+      let postY = 1;
+      for (let index = 9; index >= 0; index--) {
+        context.fillText(`${country[index]}`, 0, -1 * (((height - (4 * border)) / 10 * postY) + border));
+        postY++;
+      }
+      context.restore();
 
-
+      context.save();
+      context.translate(0, height);
+      context.scale(1, -1);
+      postY = 1;
+      for (let index = 9; index >= 0; index--) {
+        context.fillStyle = "#c24c44";
+        context.fillRect(border, (((height - (4 * border)) / 10 * postY) + border + 15), ((width - (2 * border)) * (female[index] / maxGender)) + border, 30);
+        context.fillStyle = "#4494c2";
+        context.fillRect(border, (((height - (4 * border)) / 10 * postY) + border - 15), ((width - (2 * border)) * (male[index] / maxGender)) + border, 30);
+        postY++;
+      }
+      context.restore();
 
     });
   };
