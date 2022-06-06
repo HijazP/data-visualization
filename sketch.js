@@ -14,6 +14,29 @@ const sketch = () => {
     context.lineTo(border, height - border);
     context.lineTo(width - border, height - border);
     context.stroke();
+    context.closePath();
+
+    context.save();
+    context.translate(0, height);
+    context.scale(1, -1);
+    for (let index = 1; index <= 7; index++) {
+      context.beginPath();
+      context.moveTo(((width - (2 * border)) / 7 * index) + border, border);
+      context.lineTo(((width - (2 * border)) / 7 * index) + border, height - border);
+      context.strokeStyle = 'red';
+      context.stroke();
+      context.closePath();
+    }
+    context.restore();
+
+    context.save();
+    context.translate(0, height);
+    context.font = "50px Arial";
+    context.fillStyle = 'black';
+    for (let index = 1; index <= 7; index++) {
+      context.fillText(`${[index]}0`, ((width - (2 * border)) / 7 * index) + border - 25, -1);
+    }
+    context.restore();
 
     const maxGender = 60;
 
@@ -27,11 +50,11 @@ const sketch = () => {
         female.push(+d.female);
         male.push(+d.male);
       })
-    });
 
-    console.log("country", country);
-    console.log("female", female);
-    console.log("male", male);
+
+
+
+    });
   };
 };
 
