@@ -53,24 +53,24 @@ const sketch = () => {
 
       context.save();
       context.translate(0, height);
-      context.font = "40px Arial";
-      context.fillStyle = 'black';
+      context.scale(1, -1);
       let postY = 1;
       for (let index = 9; index >= 0; index--) {
-        context.fillText(`${country[index]}`, 0, -1 * (((height - (4 * border)) / 10 * postY) + border));
+        context.fillStyle = "gray";
+        context.fillRect(border, (((height - (4 * border)) / 10 * postY) + border + 15), ((width - (2 * border)) * (female[index] / maxGender)) + border, 30);
+        context.fillStyle = "orange";
+        context.fillRect(border, (((height - (4 * border)) / 10 * postY) + border - 15), ((width - (2 * border)) * (male[index] / maxGender)) + border, 30);
         postY++;
       }
       context.restore();
 
       context.save();
       context.translate(0, height);
-      context.scale(1, -1);
+      context.font = "40px Arial";
+      context.fillStyle = 'black';
       postY = 1;
       for (let index = 9; index >= 0; index--) {
-        context.fillStyle = "#c24c44";
-        context.fillRect(border, (((height - (4 * border)) / 10 * postY) + border + 15), ((width - (2 * border)) * (female[index] / maxGender)) + border, 30);
-        context.fillStyle = "#4494c2";
-        context.fillRect(border, (((height - (4 * border)) / 10 * postY) + border - 15), ((width - (2 * border)) * (male[index] / maxGender)) + border, 30);
+        context.fillText(`${country[index]}`, 0, -1 * (((height - (4 * border)) / 10 * postY) + border));
         postY++;
       }
       context.restore();
