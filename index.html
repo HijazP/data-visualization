@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="node_modules/canvas-sketch/dist/canvas-sketch.umd.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
@@ -34,8 +34,8 @@
                 <div class="accordion mt-xxl-5" id="accordion">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                aria-expanded="true" aria-controls="collapseOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 Dataset
                             </button>
                         </h2>
@@ -43,8 +43,11 @@
                             data-bs-parent="#accordion">
                             <div class="accordion-body">
                                 Dataset ini diambil dari web <a href="https://data.world/">data.world</a>.
-                                Data tersebut mencakup kode negara, nama negara, persentase value, persentase perempuan, dan persentase
-                                laki-laki yang mengalami obesitas. Link dataset : <a href="https://data.world/health/global-obesity-rates-2014">Global Obesity Rates 2014</a>
+                                Data tersebut mencakup kode negara, nama negara, persentase value, persentase perempuan,
+                                dan persentase
+                                laki-laki yang mengalami obesitas. Link dataset : <a
+                                    href="https://data.world/health/global-obesity-rates-2014">Global Obesity Rates
+                                    2014</a>
                                 <img src="images/preview.png" class="img-fluid" alt="">
                             </div>
                         </div>
@@ -59,13 +62,12 @@
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                             data-bs-parent="#accordion">
                             <div class="accordion-body">
-                                <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                    <button type="button" class="btn btn-outline-primary">Top</button>
-                                    <button type="button" class="btn btn-outline-primary">Least</button>
-                                </div>
                                 <h4 class="d-flex justify-content-center">Top 10 Obese Nations (2014)</h4>
                                 <h5 class="d-flex justify-content-center">By Gender</h5>
                                 <canvas id="myCanvas" width="1600" height="900"></canvas>
+                                <h4 class="d-flex justify-content-center mt-xxl-4">Top 10 Obese Nations (2014)</h4>
+                                <h5 class="d-flex justify-content-center">By value</h5>
+                                <canvas id="myCanvas2" width="1600" height="900"></canvas>
                             </div>
                         </div>
                     </div>
@@ -92,11 +94,12 @@
             </div>
         </div>
 
-    <script src="sketch.js"></script>
-    <script src="bar.js"></script>
-    <script src="scatter.js"></script>
-    <script src="pie.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="sketch.js"></script>
+        <script src="sketch copy.js"></script>
+        <script src="bar.js"></script>
+        <script src="scatter.js"></script>
+        <script src="pie.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
