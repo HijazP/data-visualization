@@ -1,5 +1,6 @@
 const settings = {
-  dimensions: [ 1600, 900 ]
+  dimensions: [ 1600, 900 ],
+  parent: document.getElementById("myCanvas")
 };
 
 const sketch = () => {

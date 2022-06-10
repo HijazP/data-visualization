@@ -4,34 +4,87 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="node_modules/canvas-sketch/dist/canvas-sketch.umd.js"></script>
-
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
+
+<style>
+    canvas {
+        width: 100%;
+        object-fit: contain;
+    }
+</style>
 
 <body>
 
     <div class="container">
-        <div class="row">
-            <div class="col">
-                Coba
+        <div class="row mt-xxl-4">
+            <div class="d-flex justify-content-center border-bottom">
+                <h1>Proyek KOM304 GKV 2022</h1>
             </div>
-            <div class="col align-self-start">
-            <canvas id="bar" width="1600" height="900">
-            </canvas>
-            </div>
-            <div class="col">
-                Haha
+            <div class="d-flex justify-content-center mt-xxl-2">
+                <h2>Visualisasi Data menggunakan Canvas API dan Plotly</h2>
             </div>
         </div>
-    </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="accordion mt-xxl-5" id="accordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne">
+                                Dataset
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordion">
+                            <div class="accordion-body">
+                                Dataset ini diambil dari web <a href="https://data.world/">data.world</a>.
+                                Data tersebut mencakup kode negara, nama negara, persentase value, persentase perempuan, dan persentase
+                                laki-laki yang mengalami obesitas. Link dataset : <a href="https://data.world/health/global-obesity-rates-2014">Global Obesity Rates 2014</a>
+                                <img src="images/preview.png" class="img-fluid" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Canvas API
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#accordion">
+                            <div class="accordion-body">
+                                <canvas id="myCanvas" width="1600" height="900"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Plot.ly
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordion">
+                            <div class="accordion-body">
+                                <h1 class="d-flex justify-content-center">Bar</h1>
+                                <div id="test" class="d-flex justify-content-center"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <script src="sketch copy.js"></script>
-    <script></script>
-    <script></script>
-    <script></script>
+    <script src="plot.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

@@ -1,4 +1,4 @@
-var c = document.getElementById("bar");
+var c = document.getElementById("myCanvas");
 var context = c.getContext("2d");
 
 var width = 1600;
