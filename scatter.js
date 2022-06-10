@@ -1,4 +1,4 @@
-TESTER = document.getElementById('test');
+TESTER = document.getElementById('scatter');
 
 var country = [];
 var female = [];
@@ -29,6 +29,6 @@ d3.csv('obese_nations_iso.csv', function (csv) {
         }
     ];
 
-    Plotly.newPlot("test", data);
+    Plotly.newPlot("scatter", data);
 
 });

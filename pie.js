@@ -1,15 +1,39 @@
-TESTER = document.getElementById('test');
+TESTER = document.getElementById('pie');
 
-var data = [{
-    values: [50.8, 47.6, 45.6, 43.4, 43.3, 43.2, 42.8, 42.3, 40.6, 40.3],
-    labels: ['Cook Island', 'Palau', 'Nauru', 'Samoa', 'Tonga', 'Niue', 'Marshall Island', 'Qatar', 'Kiribati', 'Tuvalu'],
+var country = [];
+var female = [];
+var male = [];
+var value = [];
+
+d3.csv('obese_nations_iso.csv', function (csv) {
+
+  csv.map(function (d) {
+    country.push(d.country);
+    value.push(+d.value);
+    female.push(+d.female);
+    male.push(+d.male);
+  })
+
+  var val = [];
+  var lab = [];
+  for (let index = 0; index < 10; index++) {
+    lab[index] = country[index];
+    val[index] = value[index];
+  }
+
+    console.log(val);
+    console.log(lab);
+  var data = [{
+    values: val,
+    labels: lab,
     type: 'pie'
   }];
-  
+
   var layout = {
     height: 400,
     width: 500
   };
-  
-  Plotly.newPlot('test', data, layout);
-  
+
+  Plotly.newPlot('pie', data, layout);
+
+});
