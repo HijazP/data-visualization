@@ -1,6 +1,5 @@
 const settings = {
-  dimensions: [ 1600, 900 ],
-  parent: document.getElementById("myCanvas")
+  dimensions: [ 1600, 900 ]
 };
 
 const sketch = () => {
@@ -20,10 +19,10 @@ const sketch = () => {
     context.save();
     context.translate(0, height);
     context.scale(1, -1);
-    for (let index = 1; index <= 7; index++) {
+    for (let index = 1; index <= 6; index++) {
       context.beginPath();
-      context.moveTo(((width - (2 * border)) / 7 * index) + border, border);
-      context.lineTo(((width - (2 * border)) / 7 * index) + border, height - border);
+      context.moveTo(((width - (2 * border)) / 6 * index) + border, border);
+      context.lineTo(((width - (2 * border)) / 6 * index) + border, height - border);
       context.strokeStyle = 'red';
       context.stroke();
       context.closePath();
@@ -32,14 +31,14 @@ const sketch = () => {
 
     context.save();
     context.translate(0, height);
-    context.font = "50px Arial";
+    context.font = "30px Arial";
     context.fillStyle = 'black';
-    for (let index = 1; index <= 7; index++) {
-      context.fillText(`${[index]}0`, ((width - (2 * border)) / 7 * index) + (border / 2), -1);
+    for (let index = 1; index <= 6; index++) {
+      context.fillText(`${[index]}0`, ((width - (2 * border)) / 6 * index) + 10 + (border / 2), -15);
     }
     context.restore();
 
-    const maxGender = 70;
+    const maxGender = 80;
 
     var country = [];
     var female = [];
@@ -58,20 +57,20 @@ const sketch = () => {
       let postY = 1;
       for (let index = 9; index >= 0; index--) {
         context.fillStyle = "gray";
-        context.fillRect(border, (((height - (4 * border)) / 10 * postY) + border + 15), ((width - (2 * border)) * (female[index] / maxGender)) + border, 30);
+        context.fillRect(border, (((height - (4 * border)) / 10 * postY) + border + 15), ((width - (2 * border)) * (female[index] / maxGender)) + 5 * border, 30);
         context.fillStyle = "orange";
-        context.fillRect(border, (((height - (4 * border)) / 10 * postY) + border - 15), ((width - (2 * border)) * (male[index] / maxGender)) + border, 30);
+        context.fillRect(border, (((height - (4 * border)) / 10 * postY) + border - 15), ((width - (2 * border)) * (male[index] / maxGender)) + 5 * border, 30);
         postY++;
       }
       context.restore();
 
       context.save();
       context.translate(0, height);
-      context.font = "40px Arial";
+      context.font = "30px Arial";
       context.fillStyle = 'black';
       postY = 1;
       for (let index = 9; index >= 0; index--) {
-        context.fillText(`${country[index]}`, 0, -1 * (((height - (4 * border)) / 10 * postY) + border));
+        context.fillText(`${country[index]}`, 0, -1 * (((height - (4 * border)) / 10 * postY) + 10 + border));
         postY++;
       }
       context.restore();
