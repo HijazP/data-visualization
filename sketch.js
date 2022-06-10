@@ -1,81 +1,82 @@
-var c = document.getElementById("myCanvas");
-var context = c.getContext("2d");
+const settings = {
+  dimensions: [ 1600, 900 ]
+};
 
-var width = 1600;
-var height = 900;
+const sketch = () => {
+  return ({ context, width, height }) => {
+    context.fillStyle = 'white';
+    context.fillRect(0, 0, width, height);
 
+    const border = 50;
 
-context.fillStyle = 'white';
-context.fillRect(0, 0, width, height);
+    context.beginPath();
+    context.moveTo(border, border);
+    context.lineTo(border, height - border);
+    context.lineTo(width - border, height - border);
+    context.stroke();
+    context.closePath();
 
-const border = 50;
+    context.save();
+    context.translate(0, height);
+    context.scale(1, -1);
+    for (let index = 1; index <= 6; index++) {
+      context.beginPath();
+      context.moveTo(((width - (2 * border)) / 6 * index) + border, border);
+      context.lineTo(((width - (2 * border)) / 6 * index) + border, height - border);
+      context.strokeStyle = 'red';
+      context.stroke();
+      context.closePath();
+    }
+    context.restore();
 
-context.beginPath();
-context.moveTo(border, border);
-context.lineTo(border, height - border);
-context.lineTo(width - border, height - border);
-context.stroke();
-context.closePath();
+    context.save();
+    context.translate(0, height);
+    context.font = "28px Arial";
+    context.fillStyle = 'black';
+    for (let index = 1; index <= 6; index++) {
+      context.fillText(`${[index]}0`, ((width - (2 * border)) / 6 * index) + 10 + (border / 2), -15);
+    }
+    context.restore();
 
-context.save();
-context.translate(0, height);
-context.scale(1, -1);
-for (let index = 1; index <= 7; index++) {
-  context.beginPath();
-  context.moveTo(((width - (2 * border)) / 7 * index) + border, border);
-  context.lineTo(((width - (2 * border)) / 7 * index) + border, height - border);
-  context.strokeStyle = 'red';
-  context.stroke();
-  context.closePath();
-}
-context.restore();
+    const maxGender = 80;
 
-context.save();
-context.translate(0, height);
-context.font = "50px Arial";
-context.fillStyle = 'black';
-for (let index = 1; index <= 7; index++) {
-  context.fillText(`${[index]}0`, ((width - (2 * border)) / 7 * index) + (border / 2), -1);
-}
-context.restore();
+    var country = [];
+    var female = [];
+    var male = [];
 
-const maxGender = 70;
+    d3.csv("obese_nations_iso.csv", function (csv) {
+      csv.map(function (d) {
+        country.push(d.country);
+        female.push(+d.female);
+        male.push(+d.male);
+      })
 
-var country = [];
-var female = [];
-var male = [];
+      context.save();
+      context.translate(0, height);
+      context.scale(1, -1);
+      let postY = 1;
+      for (let index = 9; index >= 0; index--) {
+        context.fillStyle = "blue";
+        context.fillRect(border, (((height - (4 * border)) / 10 * postY) + border + 15), ((width - (2 * border)) * (female[index] / maxGender)) + 5 * border, 30);
+        context.fillStyle = "orange";
+        context.fillRect(border, (((height - (4 * border)) / 10 * postY) + border - 15), ((width - (2 * border)) * (male[index] / maxGender)) + 5 * border, 30);
+        postY++;
+      }
+      context.restore();
 
-d3.csv("obese_nations_iso.csv", function (csv) {
-  csv.map(function (d) {
-    country.push(d.country);
-    female.push(+d.female);
-    male.push(+d.male);
-  })
+      context.save();
+      context.translate(0, height);
+      context.font = "28px Arial";
+      context.fillStyle = 'black';
+      postY = 1;
+      for (let index = 9; index >= 0; index--) {
+        context.fillText(`${country[index]}`, 0, -1 * (((height - (4 * border)) / 10 * postY) + 10 + border));
+        postY++;
+      }
+      context.restore();
 
+    });
+  };
+};
 
-
-  context.save();
-  context.translate(0, height);
-  context.scale(1, -1);
-  let postY = 1;
-  for (let index = 9; index >= 0; index--) {
-    context.fillStyle = "gray";
-    context.fillRect(border, (((height - (4 * border)) / 10 * postY) + border + 15), ((width - (2 * border)) * (female[index] / maxGender)) + border, 30);
-    context.fillStyle = "orange";
-    context.fillRect(border, (((height - (4 * border)) / 10 * postY) + border - 15), ((width - (2 * border)) * (male[index] / maxGender)) + border, 30);
-    postY++;
-  }
-  context.restore();
-
-  context.save();
-  context.translate(0, height);
-  context.font = "40px Arial";
-  context.fillStyle = 'black';
-  postY = 1;
-  for (let index = 9; index >= 0; index--) {
-    context.fillText(`${country[index]}`, 0, -1 * (((height - (4 * border)) / 10 * postY) + border));
-    postY++;
-  }
-  context.restore();
-
-});
+canvasSketch(sketch, settings);
